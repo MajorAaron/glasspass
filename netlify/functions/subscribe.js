@@ -42,7 +42,7 @@ exports.handler = async (event) => {
           {
             type: 'execute',
             stmt: {
-              sql: "INSERT INTO subscribers (email, source, idea_slug) VALUES (?, ?, ?) ON CONFLICT(email) DO UPDATE SET source = excluded.source, idea_slug = excluded.idea_slug",
+              sql: "INSERT INTO subscribers (email, source, idea_slug) VALUES (?, ?, ?) ON CONFLICT(email, idea_slug) DO UPDATE SET source = excluded.source, updated_at = CURRENT_TIMESTAMP",
               args: [
                 { type: 'text', value: email },
                 { type: 'text', value: source },
@@ -57,6 +57,11 @@ exports.handler = async (event) => {
     if (!res.ok) {
       const body = await res.text();
       return { statusCode: 502, headers, body: JSON.stringify({ error: 'Subscription failed', detail: body.slice(0, 300) }) };
+    }
+    const dbResp = await res.json();
+    const firstResult = dbResp?.results?.[0];
+    if (firstResult?.type === 'error') {
+      return { statusCode: 502, headers, body: JSON.stringify({ error: 'Database error', detail: firstResult.error?.message?.slice(0, 200) || 'unknown' }) };
     }
     return { statusCode: 200, headers, body: JSON.stringify({ ok: true }) };
   } catch (err) {
