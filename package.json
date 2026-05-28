@@ -1,0 +1,7 @@
+{
+  "name": "glasspass",
+  "version": "1.0.0",
+  "description": "Glasspass — craft-beer passport with AI sommelier",
+  "private": true,
+  "dependencies": {}
+}

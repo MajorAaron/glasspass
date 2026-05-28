@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Glasspass Sommelier — Beer Recommendations Made Personal</title>
+<meta name="description" content="Tell us 2 beers you've loved. Get 3 personalized brewery recommendations + what to order, in 15 seconds.">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="stylesheet" href="styles.css">
+<script defer src="app.js"></script>
+<!-- PostHog -->
+<script>!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys getNextSurveyStep onSessionId".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+posthog.init('phc_QLq1IyOJF3FIKXvF462tepbZqLj4hHUl5j3OkXE1ReT',{api_host:'https://us.i.posthog.com'})</script>
+</head>
+<body>
+<header class="topbar">
+  <a href="/" class="brand">
+    <img src="logo.png" alt="Glasspass" class="brand-mark" onerror="this.style.display='none'">
+    <span class="brand-text">Glasspass</span>
+  </a>
+  <nav>
+    <a href="/" class="nav-link">About</a>
+    <a href="#how" class="nav-link">How it works</a>
+  </nav>
+</header>
+
+<main class="tool-wrap">
+  <section class="tool-hero">
+    <p class="eyebrow">The Glasspass Sommelier</p>
+    <h1>Tell us 2 beers you've loved.<br><span class="hero-script">We'll pour you the next one.</span></h1>
+    <p class="subhead">15 seconds. No account. Real recommendations.</p>
+  </section>
+
+  <section class="tool-card" id="tool">
+    <form id="tasteForm" class="taste-form">
+      <label class="field-label">
+        <span class="label-text">Two or three beers you've genuinely loved</span>
+        <textarea id="beersLoved" rows="3" placeholder="e.g., Pliny the Elder, Bell's Two-Hearted, Allagash White" required></textarea>
+        <span class="hint">Style names work too — "anything funky and sour"</span>
+      </label>
+
+      <label class="field-label">
+        <span class="label-text">Where are you drinking? <span class="optional">(optional)</span></span>
+        <input id="region" type="text" placeholder="e.g., Asheville, NC or Denver">
+      </label>
+
+      <button type="submit" id="submitBtn" class="btn-primary">
+        <span class="btn-label">Pour the Recommendation</span>
+        <span class="btn-spinner" hidden>Steeping…</span>
+      </button>
+    </form>
+
+    <div id="results" class="results" hidden>
+      <div class="profile-strip">
+        <span class="profile-label">Your flavor profile</span>
+        <div id="flavorTags" class="flavor-tags"></div>
+      </div>
+
+      <section class="result-section">
+        <h2 class="section-title"><span class="section-num">01</span> Order this next</h2>
+        <div id="beerRecs" class="rec-list"></div>
+      </section>
+
+      <section class="result-section">
+        <h2 class="section-title"><span class="section-num">02</span> Three breweries to visit</h2>
+        <div id="breweryRecs" class="rec-list"></div>
+      </section>
+
+      <div class="email-capture">
+        <h3>Mail me a Glasspass passport.</h3>
+        <p>Free. We'll send you a printed passport for your region so you can collect every brewery you visit.</p>
+        <form id="emailForm" class="inline-form">
+          <input type="email" id="emailInput" placeholder="you@brewing.beer" required>
+          <button type="submit" class="btn-secondary">Send me one</button>
+        </form>
+        <p class="status" id="emailStatus"></p>
+      </div>
+
+      <button id="restartBtn" class="btn-text">Try a different profile</button>
+    </div>
+
+    <div id="errorBox" class="error" hidden></div>
+  </section>
+
+  <section class="how-it-works" id="how">
+    <h2>How Glasspass works</h2>
+    <div class="how-grid">
+      <div class="how-step">
+        <div class="step-num">1</div>
+        <h3>Scan at the bar</h3>
+        <p>Every participating taproom has a Glasspass card on the bar. Scan the QR. No app to install.</p>
+      </div>
+      <div class="how-step">
+        <div class="step-num">2</div>
+        <h3>Tell us what you like</h3>
+        <p>Name 2 beers you've loved. The sommelier builds your flavor profile in seconds.</p>
+      </div>
+      <div class="how-step">
+        <div class="step-num">3</div>
+        <h3>Order with confidence</h3>
+        <p>Get a real recommendation from the current menu — plus three breweries to visit next.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="reverse-note">
+    <span class="reverse-eyebrow">Why we're different</span>
+    <p>Breweries don't pay us. Distributors and tourism boards do. That keeps the passport free for taprooms and keeps recommendations honest about what's on tap.</p>
+  </section>
+</main>
+
+<footer class="footer">
+  <p>© 2026 Glasspass · part of <a href="https://majorsolutions.studio">Major Solutions Studio</a></p>
+</footer>
+</body>
+</html>

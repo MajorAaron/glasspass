@@ -1,0 +1,36 @@
+{
+  "concepts": [
+    {
+      "id": 1,
+      "type": "wax-seal badge",
+      "legibility": 6,
+      "memorability": 7,
+      "brand_fit": 9,
+      "versatility": 7,
+      "overall": 7,
+      "notes": "The wax seal is a nice touch, but the text might be hard to read at smaller sizes."
+    },
+    {
+      "id": 2,
+      "type": "typographic beer-integration",
+      "legibility": 8,
+      "memorability": 8,
+      "brand_fit": 8,
+      "versatility": 9,
+      "overall": 8,
+      "notes": "The beer glass incorporated into the wordmark is clever and memorable, but the color is limiting."
+    },
+    {
+      "id": 3,
+      "type": "artichoke badge",
+      "legibility": 7,
+      "memorability": 6,
+      "brand_fit": 5,
+      "versatility": 8,
+      "overall": 6,
+      "notes": "The artichoke is unexpected and doesn't immediately convey 'craft beer' or 'passport'."
+    }
+  ],
+  "winner": 2,
+  "winner_reason": "The typographic logo is the most legible and memorable, while still fitting the brand's aesthetic."
+}
