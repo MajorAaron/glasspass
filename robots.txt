@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://glasspass.majorsolutions.studio/sitemap.xml
